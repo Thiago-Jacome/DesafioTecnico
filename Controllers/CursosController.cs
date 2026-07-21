@@ -2,11 +2,11 @@
 
 namespace DesafioTecnico.Controllers
 {
-    public class CursosController : Controller
+    [ApiController]
+    [Route("api/cursos")]
+    public class CursosController : ControllerBase
     {
-        public IActionResult Index()
-        {
-            return View();
-        }
+        [HttpPost("Cursos")]
+        public IActionResult ConsultarCursos() => StatusCode(StatusCodes.Status501NotImplemented, "Endpoint em desenvolvimento.");
     }
 }
