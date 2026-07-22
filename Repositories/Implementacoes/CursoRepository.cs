@@ -50,7 +50,7 @@ namespace DesafioTecnico.Repositories.Implementacoes
     public async Task<bool> DeletarCursoAsync(int id)
         {
             await using var conn = connection.CreateConnection("desafio");
-            const string qry = "DELETE FROM tblcursos WHERE recno = Id";
+            const string qry = "DELETE FROM tblcursos WHERE recno =@Id";
 
             await using var cmd = new MySqlCommand(qry, conn);
             cmd.Parameters.AddWithValue("@Id", id);
