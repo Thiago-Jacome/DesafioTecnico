@@ -1,8 +1,8 @@
-﻿namespace DesafioTecnico.Models
+namespace DesafioTecnico.Models
 {
     public class Curso
     {
         public int Recno { get; set; }
-        public string Nome_cursos { get; set; }
+        public string Nome_cursos { get; set; } = string.Empty;
     }
 }

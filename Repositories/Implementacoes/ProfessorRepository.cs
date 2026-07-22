@@ -1,6 +1,8 @@
-﻿namespace DesafioTecnico.Repositories.Implementacoes
+using DesafioTecnico.Repositories.Interfaces;
+
+namespace DesafioTecnico.Repositories.Implementacoes
 {
-    public class ProfessorRepository
+    public class ProfessorRepository : IProfessorRepository
     {
     }
 }

@@ -1,12 +1,18 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using DesafioTecnico.DTOs.Responses;
+using DesafioTecnico.Services.Interfaces;
+using Microsoft.AspNetCore.Mvc;
 
 namespace DesafioTecnico.Controllers
 {
     [ApiController]
-    [Route("api/cursos")]
-    public class CursosController : ControllerBase
+    [Route("api/[controller]")]
+    public class CursosController(ICursoService cursoService) : ControllerBase
     {
-        [HttpPost("Cursos")]
-        public IActionResult ConsultarCursos() => StatusCode(StatusCodes.Status501NotImplemented, "Endpoint em desenvolvimento.");
+        [HttpGet]
+        public async Task<ActionResult<List<RetornoCursosDto>>> ConsultarCursos()
+        {
+            var cursos = await cursoService.BuscarCursosAsync();
+            return Ok(cursos);
+        }
     }
 }

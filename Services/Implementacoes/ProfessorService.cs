@@ -1,6 +1,9 @@
-﻿namespace DesafioTecnico.Services.Implementacoes
+using DesafioTecnico.Repositories.Interfaces;
+using DesafioTecnico.Services.Interfaces;
+
+namespace DesafioTecnico.Services.Implementacoes
 {
-    public class ProfessorService
+    public class ProfessorService : IProfessorService
     {
     }
 }

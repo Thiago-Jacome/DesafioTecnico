@@ -1,6 +1,8 @@
-﻿namespace DesafioTecnico.Repositories.Interfaces
+using DesafioTecnico.DTOs.Responses;
+
+namespace DesafioTecnico.Repositories.Interfaces;
+
+public interface ICursoRepository
 {
-    public interface ICursoRepository
-    {
-    }
+    Task<List<RetornoCursosDto>> BuscarCursosAsync();
 }
