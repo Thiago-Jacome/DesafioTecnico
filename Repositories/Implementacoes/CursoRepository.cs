@@ -31,5 +31,36 @@ namespace DesafioTecnico.Repositories.Implementacoes
 
             return lista;
         }
+
+        public async Task<int> CriarCursoAsync(string nomeCurso)
+        {
+            await using var conn = connection.CreateConnection("desafio");
+            const string qry = """
+
+                INSERT INTO tblcursos (nome_cursos) values (@Nome);
+                Select LAST_INSERT_ID();
+                """;
+            await using var cmd = new MySqlCommand(qry, conn);
+            cmd.Parameters.AddWithValue("@Nome", nomeCurso);
+            await conn.OpenAsync();
+            var idGerado = Convert.ToInt32(await cmd.ExecuteScalarAsync());
+            return idGerado;
+        }
+    // Metodo para excluir do banco
+    public async Task<bool> DeletarCursoAsync(int id)
+        {
+            await using var conn = connection.CreateConnection("desafio");
+            const string qry = "DELETE FROM tblcursos WHERE recno = Id";
+
+            await using var cmd = new MySqlCommand(qry, conn);
+            cmd.Parameters.AddWithValue("@Id", id);
+
+            await conn.OpenAsync();
+            int linhasAfetadas = await cmd.ExecuteNonQueryAsync();
+
+            return linhasAfetadas > 0;
+          
+        }
     }
+
 }
